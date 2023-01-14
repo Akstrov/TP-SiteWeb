@@ -36,21 +36,25 @@
             // })
             var input = document.getElementById('recherche');
             input.addEventListener('input', function() {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'search.php?n=' + input.value, true);
-                xhr.responseType = 'json';
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        var data = xhr.response;
-                        var table = '<table class="my-table">';
-                        for (var i = 0; i < data.length; i++) {
-                            table += '<tr><td><img width="200px" height="200px" src = "' + data[i].photo + '" ></td><td>' + data[i].nom + ' ' + data[i].prenom + '</td><td><a href = "sendInvite.php?id=' + data[i].idUser + '">Ajouter</a></td></tr>';
+                if (input.value != '') {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', 'search.php?n=' + input.value, true);
+                    xhr.responseType = 'json';
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            var data = xhr.response;
+                            var table = '<table class="my-table">';
+                            for (var i = 0; i < data.length; i++) {
+                                table += '<tr><td><img width="200px" height="200px" src = "' + data[i].photo + '" ></td><td>' + data[i].nom + ' ' + data[i].prenom + '</td><td><a href = "sendInvite.php?id=' + data[i].idUser + '">Ajouter</a></td></tr>';
+                            }
+                            table += '</table>';
+                            document.querySelector('.table-container').innerHTML = table;
                         }
-                        table += '</table>';
-                        document.querySelector('.table-container').innerHTML = table;
-                    }
-                };
-                xhr.send();
+                    };
+                    xhr.send();
+                } else {
+                    document.querySelector('.table-container').innerHTML = '';
+                }
             });
 
         })
