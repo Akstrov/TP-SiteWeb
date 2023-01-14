@@ -17,6 +17,22 @@
         <?php include('leftUser.php'); ?>
         <div class="main">
             <h1>Message</h1>
+            <table class="my-table">
+                <?php
+                include('connect.php');
+                $req = "select * from messages where (exp = " . $_GET['id'] . " and des = " . $_SESSION['id'] . ") or (exp = " . $_SESSION['id'] . " and des = " . $_GET['id'] . ") order by dateEnvoie";
+                $res = mysqli_query($conn, $req);
+                while ($row = mysqli_fetch_array($res)) {
+                    echo "<tr><td><p ";
+                    if ($row['exp'] == $_SESSION['id']) {
+                        echo "style='text-align:right; background-color:lightgrey'";
+                    } else {
+                        echo "style='text-align:left; background-color:lightblue'";
+                    }
+                    echo ">" . $row['message'] . "</p></td></tr>";
+                }
+                ?>
+            </table>
             <form method="post" action="sendMessage.php">
                 <input type="hidden" name="des" value="<?php echo ($_GET['id']); ?>">
                 <label for="message">Message</label>
