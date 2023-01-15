@@ -25,9 +25,9 @@
                 while ($row = mysqli_fetch_array($res)) {
                     echo "<tr><td><p ";
                     if ($row['exp'] == $_SESSION['id']) {
-                        echo "style='text-align:right; background-color:lightgrey'";
+                        echo "style='text-align:right; background-color:#333;color:white;'";
                     } else {
-                        echo "style='text-align:left; background-color:lightblue'";
+                        echo "style='text-align:left; background-color:darkcyan;'";
                     }
                     echo ">" . $row['message'] . "</p></td></tr>";
                 }

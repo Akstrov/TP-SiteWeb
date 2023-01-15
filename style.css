@@ -1,4 +1,7 @@
 body {
+    background-image: url('background/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0;
     height: 100vh;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -104,7 +107,7 @@ nav.left a:hover {
   flex-direction: column;
   height: 100%;
   padding: 1rem;
-  background-color: #eee;
+  background-color: transparent;
 }
 
 .main h1 {
@@ -193,13 +196,10 @@ nav.left a:hover {
   
   .my-table td, .my-table th {
     border: 1px solid #ddd;
-    padding: 8px;
   }
-  
-  .my-table tr:nth-child(even) {
-    background-color: #f2f2f2;
+  .my-table td p{
+
   }
-  
   .my-table tr:hover {
     background-color: #ddd;
   }

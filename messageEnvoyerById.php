@@ -23,7 +23,7 @@
                 $req = "select * from messages where (exp = " . $_SESSION['id'] . " and des = " . $_GET['id'] . ") order by dateEnvoie";
                 $res = mysqli_query($conn, $req);
                 while ($row = mysqli_fetch_array($res)) {
-                    echo "<tr><td><p style='text-align:right; background-color:lightgrey'
+                    echo "<tr><td><p style='text-align:right; background-color:#333;color:#fff'
                     >" . $row['message'] . "</p></td></tr>";
                 }
                 ?>
